@@ -2,5 +2,5 @@
 @import "tailwindcss";
 
 body {
-  font-family:  cursive !important;
+  @apply font-sans;
 }

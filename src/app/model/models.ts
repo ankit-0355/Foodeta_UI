@@ -1,8 +1,9 @@
 export interface TiffinProvider {
-  // id: string;
+  id: string;
+  created_at: string;    // ISO Date string
 
   // Provider Info
-  name: string;
+  service_name: string;
   description: string;
   imageUrl: string;
 
@@ -19,7 +20,7 @@ export interface TiffinProvider {
 
   // Today's Menu (Flat structure)
   todaysMenu: {
-    date: string;             // "2025-10-28"
+    // date: string;             // "2025-10-28"
     items: {
       name: string;
       description?: string;

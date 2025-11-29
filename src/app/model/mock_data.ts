@@ -3,147 +3,269 @@ import { TiffinProvider } from './models';
 
 export const PROVIDERS: TiffinProvider[] = [
   {
-    // id: 'gujarat-bhavan-kitchen',
-    name: 'Gujarat Bhavan Kitchen',
-    description:
-      'Authentic Gujarati thali with traditional recipes from Gujarat. Fresh rotli, variety of sabzi, farsan, and sweet dishes daily.',
-    imageUrl: 'image_1.jpg',
-    rating: 4.9,
-    reviewCount: 187,
-    pricePerDay: 14,
-    location: 'Brampton, ON',
-    tags: ['Gujarati', 'Vegetarian'],
-    todaysMenu: {
-      date: '2025-10-28',
-      items: [
-        { name: 'Undhiyu', description: 'Mixed vegetable curry – Gujarati specialty' },
-        { name: 'Dal Dhokli', description: 'Wheat dumplings in spiced lentil soup' },
-        { name: 'Roti (4 pcs)' },
-        { name: 'Kadhi', description: 'Yogurt-based curry with pakoras' },
-        { name: 'Kachumber Salad' },
-        { name: 'Shrikhand' }
-      ]
-    },
-    deliveryAreas: ['Brampton', 'Mississauga', 'Malton']
+      "id": "1",
+      "created_at": "2025-11-28T04:47:44.823644+00:00",
+      "service_name": "Gujarat Bhavan Kitchen",
+      "imageUrl": "image_1.jpg",
+      "description": "Authentic Gujarati thali with traditional recipes from Gujarat. Fresh rotli, variety of sabzi, farsan, and sweet dishes daily.",
+      "rating": 4.9,
+      "reviewCount": 187,
+      "pricePerDay": 11.99,
+      "location": "Brampton, ON",
+      "tags": [
+          "Gujarati",
+          "Vegetarian"
+      ],
+      "deliveryAreas": [
+          "Brampton",
+          "Mississauga",
+          "Malton"
+      ],
+      "todaysMenu": {
+          "items": [
+              {
+                  "name": "Undhiyu', description: 'Mixed vegetable curry – Gujarati specialty"
+              },
+              {
+                  "name": "Dal Dhokli",
+                  "description": "Wheat dumplings in spiced lentil soup"
+              },
+              {
+                  "name": "Roti (4 pcs)"
+              },
+              {
+                  "name": "Kadhi",
+                  "description": "Yogurt-based curry with pakoras"
+              },
+              {
+                  "name": "Kachumber Salad"
+              },
+              {
+                  "name": "Shrikhand"
+              }
+          ]
+      }
   },
-
   {
-    // id: 'punjab-home-kitchen',
-    name: 'Punjab Home Kitchen',
-    description:
-      'Traditional Punjabi tiffin made fresh daily with homestyle flavors. Includes paratha, sabzi, dal, and dessert on rotation.',
-    imageUrl: 'image_2.jpg',
-    rating: 4.7,
-    reviewCount: 254,
-    pricePerDay: 15,
-    location: 'Mississauga, ON',
-    tags: ['Punjabi', 'North Indian'],
-    todaysMenu: {
-      date: '2025-10-28',
-      items: [
-        { name: 'Aloo Paratha', description: 'Served with butter & pickle' },
-        { name: 'Chole', description: 'Spiced chickpea curry' },
-        { name: 'Jeera Rice' },
-        { name: 'Boondi Raita' },
-        { name: 'Gajar Halwa' }
-      ]
-    },
-    deliveryAreas: ['Mississauga', 'Etobicoke', 'Brampton']
+      "id": "2",
+      "created_at": "2025-11-29T20:06:20.887739+00:00",
+      "service_name": "Gujarat Bhavan Kitchen",
+      "imageUrl": "image_2.jpg",
+      "description": "Authentic Gujarati thali with traditional recipes from Gujarat. Fresh rotli, variety of sabzi, farsan, and sweet dishes daily.",
+      "rating": 4.9,
+      "reviewCount": 187,
+      "pricePerDay": 11.99,
+      "location": "Brampton, ON",
+      "tags": [
+          "Gujarati",
+          "Vegetarian"
+      ],
+      "deliveryAreas": [
+          "Brampton",
+          "Mississauga",
+          "Malton"
+      ],
+      "todaysMenu": {
+          "items": [
+              {
+                  "name": "Undhiyu', description: 'Mixed vegetable curry – Gujarati specialty"
+              },
+              {
+                  "name": "Dal Dhokli",
+                  "description": "Wheat dumplings in spiced lentil soup"
+              },
+              {
+                  "name": "Roti (4 pcs)"
+              },
+              {
+                  "name": "Kadhi",
+                  "description": "Yogurt-based curry with pakoras"
+              },
+              {
+                  "name": "Kachumber Salad"
+              },
+              {
+                  "name": "Shrikhand"
+              }
+          ]
+      }
   },
-
   {
-    // id: 'maharashtra-tiffin-house',
-    name: 'Maharashtra Tiffin House',
-    description:
-      'Nutritious Maharashtrian-style ghar ka khana delivered fresh. Includes bhakri, varan, sabzi, and seasonal sweets.',
-    imageUrl: 'image_3.jpeg',
-    rating: 4.8,
-    reviewCount: 143,
-    pricePerDay: 13,
-    location: 'Scarborough, ON',
-    tags: ['Maharashtrian'],
-    todaysMenu: {
-      date: '2025-10-28',
-      items: [
-        { name: 'Pithla', description: 'Gram flour curry' },
-        { name: 'Bajra Bhakri' },
-        { name: 'Tomato Saar' },
-        { name: 'Batata Bhaji' },
-        { name: 'Kanda Kachumber' },
-        { name: 'Sheera' }
-      ]
-    },
-    deliveryAreas: ['Scarborough', 'North York', 'Toronto']
+      "id": "3",
+      "created_at": "2025-11-29T20:09:56.864711+00:00",
+      "service_name": "Maa Annapurna Tiffin Service",
+      "imageUrl": "image_3.jpg",
+      "description": "Daily homemade Indian vegetarian meals with roti, sabzi, dal, rice and salad.",
+      "rating": 4.7,
+      "reviewCount": 142,
+      "pricePerDay": 10.49,
+      "location": "Mississauga, ON",
+      "tags": [
+          "North Indian",
+          "Vegetarian",
+          "Home-style"
+      ],
+      "deliveryAreas": [
+          "Mississauga",
+          "Brampton",
+          "Etobicoke"
+      ],
+      "todaysMenu": {
+          "items": [
+              {
+                  "name": "Aloo Gobi",
+                  "description": "Cauliflower and potato curry"
+              },
+              {
+                  "name": "Yellow Dal",
+                  "description": "Lightly spiced moong dal"
+              },
+              {
+                  "name": "Roti (5 pcs)"
+              },
+              {
+                  "name": "Jeera Rice"
+              },
+              {
+                  "name": "Boondi Raita"
+              }
+          ]
+      }
   },
-
   {
-    // id: 'south-indian-anna-tiffin',
-    name: 'Anna South Indian Kitchen',
-    description:
-      'Healthy South Indian meals with idli, dosa variations, sambhar, rasam, and rice dishes. Light, fresh, and flavorful.',
-    imageUrl: 'assets/images/south-indian.jpg',
-    rating: 4.6,
-    reviewCount: 198,
-    pricePerDay: 12,
-    location: 'Toronto, ON',
-    tags: ['South Indian'],
-    todaysMenu: {
-      date: '2025-10-28',
-      items: [
-        { name: 'Lemon Rice' },
-        { name: 'Sambhar' },
-        { name: 'Cabbage Poriyal' },
-        { name: 'Medu Vada (2 pcs)' },
-        { name: 'Curd Rice' }
-      ]
-    },
-    deliveryAreas: ['Toronto', 'North York']
+      "id": "4",
+      "created_at": "2025-11-29T20:10:40.70975+00:00",
+      "service_name": "Surti Swad Tiffin",
+      "imageUrl": "image_4.jpg",
+      "description": "Fresh Surti-style meals with light spices, roti, dal, sabzi, farsan and sweet.",
+      "rating": 4.8,
+      "reviewCount": 165,
+      "pricePerDay": 12.49,
+      "location": "Etobicoke, ON",
+      "tags": [
+          "Gujarati",
+          "Surti",
+          "Vegetarian"
+      ],
+      "deliveryAreas": [
+          "Etobicoke",
+          "Mississauga",
+          "Brampton"
+      ],
+      "todaysMenu": {
+          "items": [
+              {
+                  "name": "Puri (6 pcs)"
+              },
+              {
+                  "name": "Ringan Bataka Nu Shaak",
+                  "description": "Eggplant and potato curry"
+              },
+              {
+                  "name": "Toor Dal"
+              },
+              {
+                  "name": "Khichdi"
+              },
+              {
+                  "name": "Fafda"
+              },
+              {
+                  "name": "Jalebi"
+              }
+          ]
+      }
   },
-
   {
-    // id: 'kolkata-maa-canteen',
-    name: 'Kolkata Maa Canteen',
-    description:
-      'Comforting Bengali ghar-er ranna with rice, dal, fish curry/veg option, and sweets like mishti doi & rasgulla.',
-    imageUrl: 'assets/images/bengali-tiffin.jpg',
-    rating: 4.5,
-    reviewCount: 112,
-    pricePerDay: 16,
-    location: 'Oakville, ON',
-    tags: ['Bengali', 'Non-Veg Available'],
-    todaysMenu: {
-      date: '2025-10-28',
-      items: [
-        { name: 'Bengali Dal' },
-        { name: 'Aloo Posto' },
-        { name: 'Begun Bhaja' },
-        { name: 'Steamed Rice' },
-        { name: 'Rasgulla' }
-      ]
-    },
-    deliveryAreas: ['Oakville', 'Burlington', 'Milton']
+      "id": "5",
+      "created_at": "2025-11-29T20:11:38.604331+00:00",
+      "service_name": "Mumbai Spice Tiffin",
+      "imageUrl": "image_5.jpg",
+      "description": "Authentic Mumbai-style homemade meals with light masala, roti, rice, and vegetable gravy.",
+      "rating": 4.6,
+      "reviewCount": 129,
+      "pricePerDay": 10.99,
+      "location": "Scarborough, ON",
+      "tags": [
+          "Maharashtrian",
+          "Indian",
+          "Home-style"
+      ],
+      "deliveryAreas": [
+          "Scarborough",
+          "North York",
+          "Markham",
+          "Toronto"
+      ],
+      "todaysMenu": {
+          "items": [
+              {
+                  "name": "Misal",
+                  "description": "Sprouts curry with farsan topping"
+              },
+              {
+                  "name": "Batata Bhaji",
+                  "description": "Dry potato masala"
+              },
+              {
+                  "name": "Chapati (4 pcs)"
+              },
+              {
+                  "name": "Plain Rice"
+              },
+              {
+                  "name": "Koshimbir Salad"
+              },
+              {
+                  "name": "Sheera",
+                  "description": "Semolina sweet dessert"
+              }
+          ]
+      }
   },
-
   {
-    // id: 'hyderabad-spice-tiffin',
-    name: 'Hyderabad Spice Tiffin',
-    description:
-      'Spicy and flavorful Hyderabadi meals with biryani rotation, curries, bagara rice, and mirchi ka salan.',
-    imageUrl: 'assets/images/hyderabad-tiffin.jpg',
-    rating: 4.8,
-    reviewCount: 321,
-    pricePerDay: 17,
-    location: 'Milton, ON',
-    tags: ['Hyderabadi', 'Spicy'],
-    todaysMenu: {
-      date: '2025-10-28',
-      items: [
-        { name: 'Veg Biryani', description: 'Authentic Hyderabadi style' },
-        { name: 'Mirchi Ka Salan' },
-        { name: 'Onion Raita' },
-        { name: 'Double Ka Meetha' }
-      ]
-    },
-    deliveryAreas: ['Milton', 'Brampton', 'Toronto']
+      "id": "6",
+      "created_at": "2025-11-29T20:12:00.703665+00:00",
+      "service_name": "Punjabi Rasoi Meals",
+      "imageUrl": "image_6.jpg",
+      "description": "Rich, flavourful Punjabi meals with butter roti, creamy dals, and seasonal sabzi.",
+      "rating": 4.8,
+      "reviewCount": 214,
+      "pricePerDay": 12.99,
+      "location": "Brampton, ON",
+      "tags": [
+          "Punjabi",
+          "North Indian",
+          "Vegetarian"
+      ],
+      "deliveryAreas": [
+          "Brampton",
+          "Caledon",
+          "Mississauga"
+      ],
+      "todaysMenu": {
+          "items": [
+              {
+                  "name": "Chole",
+                  "description": "Spicy chickpea curry"
+              },
+              {
+                  "name": "Dal Makhani",
+                  "description": "Creamy black lentils slow-cooked overnight"
+              },
+              {
+                  "name": "Butter Roti (4 pcs)"
+              },
+              {
+                  "name": "Jeera Rice"
+              },
+              {
+                  "name": "Onion Salad"
+              },
+              {
+                  "name": "Gajar Halwa"
+              }
+          ]
+      }
   }
-];
+]
