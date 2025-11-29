@@ -1,28 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 
-html, body {
-  height: 100%;
-}
-
 body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-/* Make the whole Angular app a flex column filling the screen */
-app-root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Let the middle content grow and push footer down */
-.page-content {
-  flex: 1;
-}
-
-/* Push footer to bottom when content is short */
-app-footer {
-  margin-top: auto;
+  font-family:  cursive !important;
 }

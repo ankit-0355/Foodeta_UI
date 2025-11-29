@@ -7,7 +7,7 @@ export const PROVIDERS: TiffinProvider[] = [
     name: 'Gujarat Bhavan Kitchen',
     description:
       'Authentic Gujarati thali with traditional recipes from Gujarat. Fresh rotli, variety of sabzi, farsan, and sweet dishes daily.',
-    imageUrl: 'assets/images/gujarat-bhavan.jpg',
+    imageUrl: 'image_1.jpg',
     rating: 4.9,
     reviewCount: 187,
     pricePerDay: 14,
@@ -19,7 +19,7 @@ export const PROVIDERS: TiffinProvider[] = [
         { name: 'Undhiyu', description: 'Mixed vegetable curry – Gujarati specialty' },
         { name: 'Dal Dhokli', description: 'Wheat dumplings in spiced lentil soup' },
         { name: 'Roti (4 pcs)' },
-        { name: 'Kadhi' },
+        { name: 'Kadhi', description: 'Yogurt-based curry with pakoras' },
         { name: 'Kachumber Salad' },
         { name: 'Shrikhand' }
       ]
@@ -32,7 +32,7 @@ export const PROVIDERS: TiffinProvider[] = [
     name: 'Punjab Home Kitchen',
     description:
       'Traditional Punjabi tiffin made fresh daily with homestyle flavors. Includes paratha, sabzi, dal, and dessert on rotation.',
-    imageUrl: 'assets/images/punjab-home.jpg',
+    imageUrl: 'image_2.jpg',
     rating: 4.7,
     reviewCount: 254,
     pricePerDay: 15,
@@ -56,7 +56,7 @@ export const PROVIDERS: TiffinProvider[] = [
     name: 'Maharashtra Tiffin House',
     description:
       'Nutritious Maharashtrian-style ghar ka khana delivered fresh. Includes bhakri, varan, sabzi, and seasonal sweets.',
-    imageUrl: 'assets/images/maharashtra-tiffin.jpg',
+    imageUrl: 'image_3.jpeg',
     rating: 4.8,
     reviewCount: 143,
     pricePerDay: 13,
