@@ -1,0 +1,53 @@
+<footer class="w-full h-auto bg-amber-700 text-white">
+  <!-- Main Footer Content -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-6">
+    <!-- About Foodeta -->
+    <div>
+      <h3 class="text-base font-semibold mb-4">About Foodeta</h3>
+      <p class="text-sm mb-4">Your trusted platform for authentic Indian tiffin services in Canada. Connecting you with the best home-style Gujarati and regional Indian cuisine.</p>
+      <div class="flex gap-3 mt-6">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-white w-10 h-10 rounded flex items-center justify-center bg-transparent hover:bg-amber-600/10">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M17.5 6.5h.01"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-base font-semibold mb-4">Quick Links</h3>
+      <ul class="space-y-2">
+        <li><a href="/" class="text-sm hover:text-amber-200">Home Page</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Us (left-aligned) -->
+    <div class="text-left">
+      <h3 class="text-base font-semibold mb-4">Contact Us</h3>
+      <div class="space-y-3">
+        <div class="flex items-center gap-2">
+          <mat-icon class = "material-symbols-outlined">mail</mat-icon>
+          <span class="text-sm">info@foodeta.ca</span>
+        </div>
+        <div class="flex items-center gap-2">
+        <mat-icon class = "material-symbols-outlined">call</mat-icon>
+          <span class="text-sm">+1 (647) 123-4567</span>
+        </div>
+        <div class="flex items-start gap-2">
+        <mat-icon class = "material-symbols-outlined">location_on</mat-icon>
+          <div class="text-sm">Greater Toronto Area, Ontario, Canada</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- removed tagline column -->
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t-2 border-amber-600 px-6 py-4 flex justify-between items-center">
+    <p class="text-sm">© {{ year() }} Foodeta. All rights reserved.</p>
+  </div>
+</footer>
