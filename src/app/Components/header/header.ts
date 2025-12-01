@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MenuService } from '../../services/menu-service';
 
 @Component({
   selector: 'app-header',
@@ -8,5 +9,5 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './header.css',
 })
 export class Header {
-
+  menusrv = inject(MenuService);
 }

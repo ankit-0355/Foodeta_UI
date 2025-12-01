@@ -1,0 +1,36 @@
+<!-- Backdrop -->
+@if(cartOpen()) {
+    <div 
+      class="fixed inset-0 bg-black/40 z-40"
+      [class.fade-in]="cartOpen()"
+      [class.fade-out]="!cartOpen()"
+      (click)="menusrv.toggleCart()"
+    ></div>
+  }
+  
+  <!-- Cart drawer -->
+  <div 
+    class="slide-in-right fixed top-0 right-0 w-120 h-full bg-white shadow-2xl z-50 flex flex-col"
+    [class.open]="cartOpen()"
+    [class.slide-out]="!cartOpen()"
+  >
+    <!-- Header -->
+    <div class="flex items-center justify-between p-4 border-b">
+      <div class="flex items-center space-x-2">
+        <mat-icon class="material-symbols-outlined">local_grocery_store</mat-icon>
+        <h3 class="text-lg font-semibold">Your Cart</h3>
+      </div>
+      <button (click)="menusrv.toggleCart()" class="text-gray-500 hover:text-gray-800 text-xl">✖</button>
+    </div>
+  
+    <!-- Empty state -->
+    <div class="flex flex-col items-center justify-center flex-grow text-center p-6 space-y-4">
+      <img src="/assets/cart-empty.png" alt="Empty Cart" class="w-24 h-24 opacity-40 mx-auto">
+      <p class="text-gray-600 font-medium">Your cart is empty</p>
+      <p class="text-gray-400 text-sm">
+        Browse our tiffin providers and add your favorite meals to get started
+      </p>
+    </div>
+
+  </div>
+  

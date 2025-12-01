@@ -4,3 +4,62 @@
 body {
   @apply font-sans;
 }
+
+.meal_icon {
+  @apply text-white pt-[2px] text-[25px];
+}
+
+.cart_icon {
+  @apply mr-4 !text-[32px] !w-[40px] !h-[30px]
+}
+
+/* ---------------------------------------------------
+   BACKDROP ANIMATION
+---------------------------------------------------- */
+
+/* Fade-in for backdrop */
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Fade-out for backdrop */
+.fade-out {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+/* ---------------------------------------------------
+   SLIDE-IN DRAWERS (LEFT & RIGHT)
+   Reusable with class.open
+---------------------------------------------------- */
+
+/* Slide in from right */
+.slide-in-right {
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+}
+.slide-in-right.open {
+  transform: translateX(0);
+}
+
+/* Slide in from left */
+.slide-in-left {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
+}
+.slide-in-left.open {
+  transform: translateX(0);
+}
+
+/* ---------------------------------------------------
+   KEYFRAME DEFINITIONS
+---------------------------------------------------- */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}

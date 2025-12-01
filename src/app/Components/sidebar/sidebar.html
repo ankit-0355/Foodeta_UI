@@ -1,0 +1,29 @@
+<!-- Backdrop -->
+<div 
+  class="fixed inset-0 bg-black/40 z-40"
+  [class.fade-in]="navOpen()"
+  [class.fade-out]="!navOpen()"
+  [class.pointer-events-none]="!navOpen()"
+  (click)="menusrv.toggleSidenav()"
+></div>
+
+<!-- Sidebar drawer -->
+<div 
+  class="slide-in-left fixed top-0 left-0 w-64 h-full bg-white shadow-2xl z-50 flex flex-col"
+  [class.open]="navOpen()"
+  [class.slide-out]="!navOpen()"
+>
+  <!-- Header -->
+  <div class="header flex justify-between items-center p-4 border-b">
+    <h3 class="text-xl font-semibold">Menu</h3>
+    <button (click)="menusrv.toggleSidenav()" class="text-xl">✖</button>
+  </div>
+
+  <!-- Navigation links -->
+  <nav class="flex flex-col p-4 space-y-3">
+    <a href="#" class="text-gray-700 hover:text-orange-600">Home</a>
+    <a href="#" class="text-gray-700 hover:text-orange-600">Profile</a>
+    <a href="#" class="text-gray-700 hover:text-orange-600">Orders</a>
+    <a href="#" class="text-gray-700 hover:text-orange-600">Settings</a>
+  </nav>
+</div>
