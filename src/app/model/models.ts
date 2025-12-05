@@ -30,3 +30,8 @@ export interface TiffinProvider {
   // Delivery Areas
   deliveryAreas: string[];    // ["Brampton", "Mississauga", "Malton"]
 }
+
+export interface CartItem {
+  item: TiffinProvider;
+  quantity: number;
+}

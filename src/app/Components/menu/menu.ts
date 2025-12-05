@@ -18,13 +18,13 @@ export class Menu {
   menusrv = inject(MenuService);
 
   ngOnInit() {
-    // this.providers.set(PROVIDERS); // load all mock data
-    this.menusrv.callApi().subscribe({
-      next: (res) => {
-        console.log('Response:', res);
-        this.providers.set(res);
-      },
-      error: (err) => console.error('API Error:', err)
-    });
+    this.providers.set(PROVIDERS); // load all mock data
+    // this.menusrv.callApi().subscribe({
+    //   next: (res) => {
+    //     console.log('Response:', res);
+    //     this.providers.set(res);
+    //   },
+    //   error: (err) => console.error('API Error:', err)
+    // });
   }
 }

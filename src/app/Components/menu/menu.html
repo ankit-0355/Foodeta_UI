@@ -73,9 +73,11 @@
 
       <!-- CTA -->
       <button
-        class="mt-4 w-full py-2 text-sm font-medium rounded-lg bg-black text-white hover:opacity-90"
-      >
-        Request Tiffin Service
+        class="mt-4 w-full py-2 text-sm font-medium rounded-lg bg-black text-white hover:opacity-90
+        active:scale-95"
+        (click)="this.menusrv.addToCart(p)"      
+        >
+        Add to Cart
       </button>
     </div>
   </div>

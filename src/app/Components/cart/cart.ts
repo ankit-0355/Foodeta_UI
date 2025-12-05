@@ -1,7 +1,6 @@
 import { Component, computed, inject, signal} from '@angular/core';
 import { MenuService } from '../../services/menu-service';
 import { MatIconModule } from '@angular/material/icon';
-
 @Component({
   selector: 'app-cart',
   imports: [ MatIconModule],
@@ -11,4 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 export class Cart {
   menusrv = inject(MenuService);
   cartOpen = computed(() => this.menusrv.cartOpen());
+  
+  // cartItems = signal<TiffinProvider[]>([]); // Signal to hold cart items
+
 }
