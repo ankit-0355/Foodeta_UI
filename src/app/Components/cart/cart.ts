@@ -1,9 +1,11 @@
-import { Component, computed, inject, signal} from '@angular/core';
+import { Component, computed, inject} from '@angular/core';
 import { MenuService } from '../../services/menu-service';
 import { MatIconModule } from '@angular/material/icon';
+import { DecimalPipe } from '@angular/common';
+
 @Component({
   selector: 'app-cart',
-  imports: [ MatIconModule],
+  imports: [MatIconModule, DecimalPipe],
   templateUrl: './cart.html',
   styleUrl: './cart.css',
 })

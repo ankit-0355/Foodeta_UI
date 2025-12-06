@@ -10,6 +10,8 @@ export class MenuService {
   cartOpen = signal(false);
   sidebarOpen = signal(false);
   cartItems = signal<CartItem[]>([]); // Signal to hold cart items
+  total = signal(0); // Signal to hold total price
+
 
   constructor() {
     this.callApi();
@@ -39,33 +41,27 @@ export class MenuService {
         // If item does not exist, add new item with quantity 1
         items.push({ item, quantity: 1 });
       }
-      console.log("Cart Items:", items);
+      this.total.update(total => total + item.pricePerDay);
       return items;
     });
+    
   }
 
-  removeFromCart(item: TiffinProvider) {
+  removeFromCart(ci: CartItem) {
+    this.total.update(total => total - ci.item.pricePerDay*ci.quantity);
     this.cartItems.update(items => {
-      return items.filter(i => i.item.id !== item.id);
+      return items.filter(i => i.item.id !== ci.item.id);
     });
   }
 
-  increment(item: TiffinProvider) {
-    this.cartItems.update(items =>
-      items.map(ci =>
-        ci.item.id === item.id
-          ? { ...ci, quantity: ci.quantity + 1 }
-          : ci
-      )
-    );
+  increment(ci: CartItem) {
+    ci.quantity += 1;
+    this.total.update(total => total + ci.item.pricePerDay);
   }
 
-  decrement(item: TiffinProvider) {
-    this.cartItems.update( items => 
-    items.map(ci => 
-        ci.item.id === item.id ? { ...ci, quantity: ci.quantity - 1 } : ci
-    ).filter(ci => ci.quantity > 0) // Remove item if quantity is 0
-  );
+  decrement(ci: CartItem) {
+    ci.quantity -= 1;
+    this.total.update(total => total - ci.item.pricePerDay);
   }
 
 }
