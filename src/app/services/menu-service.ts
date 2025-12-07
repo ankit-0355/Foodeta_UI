@@ -23,12 +23,12 @@ export class MenuService {
 
   toggleCart() {
     this.cartOpen.update(value => !value);
-    console.log("Cart toggler",this.cartOpen());
+    document.body.classList.toggle('no-scroll', this.cartOpen());
   }
 
   toggleSidenav() {
     this.sidebarOpen.update(value => !value);
-    console.log("Sidenav toggler",this.sidebarOpen());
+    document.body.classList.toggle('no-scroll', this.sidebarOpen());
   }
 
   addToCart(item: TiffinProvider) {

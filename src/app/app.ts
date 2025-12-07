@@ -5,7 +5,6 @@ import { Header } from './Components/header/header';
 // import { Menu } from './Components/menu/menu';
 import { Cart } from "./Components/cart/cart";
 import { Sidebar } from "./Components/sidebar/sidebar";
-// import { Mart } from "./Components/mart/mart";
 
 @Component({
   selector: 'app-root',

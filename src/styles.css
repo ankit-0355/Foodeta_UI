@@ -5,6 +5,10 @@ body {
   @apply font-sans;
 }
 
+.no-scroll {
+  overflow: hidden !important;
+}
+
 .meal_icon {
   @apply text-white pt-[2px] text-[25px];
 }
