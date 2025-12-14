@@ -1,12 +1,14 @@
-<h2 class="text-xl font-semibold mb-4 pl-2">All Tiffin Providers</h2>
-
+<!-- <h2 class="text-xl font-semibold mb-4 pl-2">All Tiffin Providers</h2> -->
+@if(loading()) {
+  <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+}
 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 p-2">
-
+  
   @for (p of providers(); track p)
   {
   <div class="bg-white shadow-md rounded-xl overflow-hidden flex flex-col">
     <!-- Image -->
-    <img [src]="p.imageUrl" [alt]="p.service_name" class="h-40 w-full object-cover"/>
+    <img [src]="p.image_url" [alt]="p.service_name" class="h-40 w-full object-cover"/>
 
     <!-- Card body -->
     <div class="p-4 flex-1 flex flex-col">
@@ -20,8 +22,8 @@
 
       <!-- Rating / price / location -->
       <div class="mt-3 text-sm text-gray-700 flex flex-wrap gap-x-3 gap-y-1">
-        <span>⭐ {{ p.rating }} ({{ p.reviewCount }} reviews)</span>
-        <span>• ${{ p.pricePerDay }}/day</span>
+        <span>⭐ {{ p.rating }} ({{ p.review_count }} reviews)</span>
+        <span>• ${{ p.price }}/day</span>
         <span>• {{ p.location }}</span>
       </div>
 
@@ -36,7 +38,7 @@
       </div>
 
       <!-- Today's Menu -->
-      <section class="mt-4 bg-orange-50 rounded-lg p-3 text-sm">
+      <section class="mt-4 bg-orange-50 rounded-lg p-3 text-sm h-60 overflow-y-auto">
         <div class="flex justify-between items-center mb-2">
           <span class="font-semibold">Today’s Menu</span>
           <span class="text-xs text-gray-500">
@@ -45,7 +47,7 @@
         </div>
 
         <ul class="space-y-1">
-          @for (item of p.todaysMenu.items; track item) {
+          @for (item of p.items.items; track item) {
           <li>
             <span class="font-medium">{{ item.name }}</span>
             @if (item.description) {
@@ -61,10 +63,10 @@
       <!-- Delivery areas -->
       <div class="mt-3 text-xs text-gray-600">
         Delivers to:
-        @for ( area of p.deliveryAreas; track area) {
+        @for ( area of p.delivery_areas; track area) {
         <span>
           {{ area }}
-          @if (area !== p.deliveryAreas[p.deliveryAreas.length - 1]) {
+          @if (area !== p.delivery_areas[p.delivery_areas.length - 1]) {
           <span>, </span>
           }
         </span>

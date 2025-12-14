@@ -1,11 +1,12 @@
 
-@if(showCheckout()) {
-  <div class="fixed inset-0 bg-black/40 z-30 flex items-center justify-center"
-    (click)="checkout()"  
-  >
-    <app-checkout></app-checkout>
+@if(menusrv.showCheckout()) {
+  <div class="fixed inset-0 z-30 flex items-center justify-center"> 
+    <div class= "fixed inset-0 bg-black/40 z-30" (click)="menusrv.checkout()"></div>
+    <div class="z-40">
+      <app-checkout></app-checkout>
+    </div> 
   </div>
-}
+} 
  <!-- Backdrop -->
 @if(cartOpen()) {
   <div 
@@ -48,11 +49,11 @@
       @for(cartitem of menusrv.cartItems(); track cartitem) {
         <div class="flex items-center justify-between mt-2 p-4 bg-white shadow-md rounded-xl w-full box-border">
           <div class="flex items-center space-x-4">
-            <img [src]="cartitem.item.imageUrl" alt="Meal" class="w-16 h-16 rounded-lg object-cover">
+            <img [src]="cartitem.item.image_url" alt="Meal" class="w-16 h-16 rounded-lg object-cover">
             <div>
               <h4 class="font-semibold">{{cartitem.item.service_name}}</h4>
               <p class="text-sm text-gray-600">{{cartitem.item.location}}</p>
-              <p class="text-sm text-gray-800 font-medium">{{cartitem.item.pricePerDay}}</p>
+              <p class="text-sm text-gray-800 font-medium">{{cartitem.item.price}}</p>
             </div>
           </div>
           <button (click)="menusrv.decrement(cartitem)">-</button>
@@ -71,8 +72,8 @@
           <span class="font-medium text-lg">Total:</span>
           <span class="font-medium text-lg">${{ menusrv.total()|number:'1.2'}} CAD</span>
         </div>
-        <button class=" w-full h-8 rounded-md bg-black text-white active:scale-95"
-          (click)="checkout()">
+        <button class="w-full h-8 rounded-md bg-black text-white active:scale-95"
+          (click)="menusrv.checkout()">
           Proceed to Checkout</button>
       </div>
     </div>

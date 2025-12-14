@@ -1,3 +1,34 @@
-<div class="bg-white shadow-md rounded-md w-120 h-160 flex items-center justify-center">
-    <p>checkout works!</p>
-</div>
+<form [formGroup]="checkoutForm" class="bg-white shadow-md rounded-md w-120 h-160 flex flex-col items-center justify-center">
+    <div class="w-full px-6">
+        <h4 class="font-medium">Full name *</h4>
+        <input type="text" class="border border-gray-300 rounded-md p-2 w-full mt-1 mb-4"
+            placeholder="Enter your name" formControlName="fullName" />
+        <h4 class="font-medium">Phone number *</h4>
+        <input type="text" class="border border-gray-300 rounded-md p-2 w-full mt-1 mb-4"
+            placeholder="+1 123-343-3467" formControlName="phone"/>
+        <h4 class="font-medium">Email *</h4>
+        <input type="email" class="border border-gray-300 rounded-md p-2 w-full mt-1 mb-4"
+            placeholder="your@email.com" formControlName="email"/>
+        <h4 class="font-medium">Delivery Address *</h4>
+        <textarea type="text" class="border border-gray-300 rounded-md p-2 w-full mt-1 mb-4"
+            placeholder="Enter your complete delivery address including postal code"
+            formControlName="address"></textarea>
+        <h4 class="font-medium">Comments</h4>
+        <textarea type="text" class="border border-gray-300 rounded-md p-2 w-full mt-1 mb-4"
+            placeholder="Additional Notes" formControlName="comments"></textarea>
+    </div>
+    <div class="w-full px-6 flex flex-col">
+        <div class="flex items-center justify-between w-full mb-4">
+            <span class="font-medium text-lg">Total:</span>
+            <span class="font-medium text-lg">${{ menusrv.total()|number:'1.2'}} CAD</span>
+        </div>
+        <div class="flex items-center justify-between w-full mb-4">
+            <button class="w-[48%] h-8 rounded-md border-1 text-black active:scale-95"
+            (click)="menusrv.checkout()">Cancle</button>
+            <button class=" w-[48%] h-8 rounded-md bg-black text-white active:scale-95"
+            (click)="placeOrder()">
+                Place Order
+            </button>
+        </div>
+    </div>
+</form>

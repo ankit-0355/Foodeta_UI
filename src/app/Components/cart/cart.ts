@@ -13,12 +13,12 @@ import { Checkout } from "../checkout/checkout";
 export class Cart {
   menusrv = inject(MenuService);
   cartOpen = computed(() => this.menusrv.cartOpen());
-  showCheckout = signal(false);
+  // showCheckout = signal(false);
   
-  checkout() {
-    this.showCheckout.update(v => !v);
-    document.body.classList.toggle('no-scroll', this.showCheckout());
-  }
+  // checkout() {
+  //   this.showCheckout.update(v => !v);
+  //   document.body.classList.toggle('no-scroll', this.showCheckout());
+  // }
 
 
   // cartItems = signal<TiffinProvider[]>([]); // Signal to hold cart items

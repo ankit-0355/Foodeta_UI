@@ -1,16 +1,16 @@
 export interface TiffinProvider {
-  id: string;
+  service_id: string;
   created_at: string;    // ISO Date string
 
   // Provider Info
   service_name: string;
   description: string;
-  imageUrl: string;
+  image_url: string;
 
   // Ratings & Pricing
   rating: number;
-  reviewCount: number;
-  pricePerDay: number;
+  review_count: number;
+  price: number;
 
   // Location
   location: string;           // e.g. "Brampton, ON"
@@ -19,7 +19,7 @@ export interface TiffinProvider {
   tags: string[];             // ["Gujarati", "Vegetarian"]
 
   // Today's Menu (Flat structure)
-  todaysMenu: {
+  items: {
     // date: string;             // "2025-10-28"
     items: {
       name: string;
@@ -28,7 +28,7 @@ export interface TiffinProvider {
   };
 
   // Delivery Areas
-  deliveryAreas: string[];    // ["Brampton", "Mississauga", "Malton"]
+  delivery_areas: string[];    // ["Brampton", "Mississauga", "Malton"]
 }
 
 export interface CartItem {
