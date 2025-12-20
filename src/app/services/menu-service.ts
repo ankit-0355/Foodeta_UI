@@ -14,6 +14,7 @@ export class MenuService {
   total = signal(0); // Signal to hold total price
   showCheckout = signal(false);
   quantity = signal(0);
+  orderPlaced = signal(false);
 
 
   constructor() {
@@ -87,4 +88,14 @@ export class MenuService {
     this.showCheckout.update(v => !v);
     document.body.classList.toggle('no-scroll', this.showCheckout());
   }
+
+  orderflag() {
+      if(this.orderPlaced()){
+        setTimeout(() => {
+          this.orderPlaced.set(false);
+          console.log('Order placed flag reset', this.orderPlaced());
+          document.body.classList.remove('no-scroll');
+        }, 2000);
+      }
+    }
 }

@@ -1,17 +1,18 @@
 
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { TiffinProvider } from '../../model/models';
 import { MenuService } from '../../services/menu-service';
 import { DatePipe } from '@angular/common';
 import { PROVIDERS } from '../../model/mock_data';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { delay } from 'rxjs';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatIcon } from "@angular/material/icon";
 
 
 @Component({
   selector: 'app-menu',
   standalone: true,                               
-  imports: [DatePipe, MatProgressBarModule],                               
+  imports: [DatePipe, MatProgressBarModule, MatIcon],                               
   templateUrl: './menu.html',
   styleUrl: './menu.css'
 })
@@ -19,6 +20,18 @@ export class Menu {
   providers = signal <TiffinProvider[]>([]);        // signal to hold tiffin providers
   menusrv = inject(MenuService);
   loading = signal(false);
+
+  getQuantity(serviceId: string): number {
+    const ci = this.menusrv.cartItems().find(ci => ci.item.service_id === serviceId);
+    return ci ? ci.quantity : 0;
+  }
+
+  OpenSnackBar(message: string, action: string) {
+    const _snackBar = inject(MatSnackBar);
+    _snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
 
   ngOnInit() {
     this.providers.set(PROVIDERS); // load all mock data
