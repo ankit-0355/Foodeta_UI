@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:pwa" : "npx http-server dist/Foodeta_UI/browser -p 8080 -c-1 --spa",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
