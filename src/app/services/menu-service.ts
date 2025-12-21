@@ -22,7 +22,7 @@ export class MenuService {
   }
 
   callApi() {
-    return this.http.get<TiffinProvider[]>('http://127.0.0.1:8000/database');
+    return this.http.get<TiffinProvider[]>('https://foddeta-backend-1030483456536.northamerica-northeast2.run.app/database');
   }
 
   toggleCart() {

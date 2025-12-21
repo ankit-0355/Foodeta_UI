@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
 export class Menu {
   providers = signal <TiffinProvider[]>([]);        // signal to hold tiffin providers
   menusrv = inject(MenuService);
-  loading = signal(false);                     // signal to indicate loading state
+  loading = signal(true);                     // signal to indicate loading state
   router = inject(Router);
   _snackBar = inject(MatSnackBar);
 
@@ -42,19 +42,19 @@ export class Menu {
   }
 
   ngOnInit() {
-    this.providers.set(PROVIDERS); // load all mock data
-    // this.menusrv.callApi()
-    // .pipe(delay(2000))
-    // .subscribe({
-    //   next: (res) => {
-    //     console.log('Response:', res);
-    //     this.loading.set(false);
-    //     this.providers.set(res);
-    //   },
-    //   error: (err) => {console.error('API Error:', err)
-    //     this.loading.set(false);
-    //     this.OpenSnackBar("Failed to load data","OK");
-    //  }
-    // });
+    // this.providers.set(PROVIDERS); // load all mock data
+    this.menusrv.callApi()
+    .pipe(delay(2000))
+    .subscribe({
+      next: (res) => {
+        console.log('Response:', res);
+        this.loading.set(false);
+        this.providers.set(res);
+      },
+      error: (err) => {console.error('API Error:', err)
+        this.loading.set(false);
+        this.OpenSnackBar("Failed to load data","OK");
+     }
+    });
   }
 }

@@ -37,7 +37,7 @@ export class Checkout {
         })),
         totalAmount: this.menusrv.total()
       };
-      const url="http://127.0.0.1:8000/place-order"
+      const url="https://foddeta-backend-1030483456536.northamerica-northeast2.run.app/place-order"
       this.http.post(url, orderDetails).subscribe({
             next: (res) => {
               // console.log('Order placed successfully:', res);
