@@ -38,13 +38,13 @@ export class Checkout {
         totalAmount: this.menusrv.total()
       };
       const url="http://127.0.0.1:8000/place-order"
-      // this.http.post(url, orderDetails).subscribe({
-      //       next: (res) => {
-      //         console.log('Order placed successfully:', res);
-      //       },
-      //       error: (err) => console.error('Order placement failed:', err)
-      //     });
-      console.log('Order Placed:', orderDetails);
+      this.http.post(url, orderDetails).subscribe({
+            next: (res) => {
+              // console.log('Order placed successfully:', res);
+            },
+            error: (err) => console.error('Order placement failed:', err)
+          });
+      // console.log('Order Placed:', orderDetails);
       // Clear cart after placing order
       this.menusrv.cartItems.set([]);
       this.menusrv.total.set(0);

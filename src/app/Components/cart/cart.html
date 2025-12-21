@@ -47,7 +47,7 @@
     <div class="w-full flex flex-col items-center justify-between h-full px-2">
       <div class="flex-grow w-full">
       @for(cartitem of menusrv.cartItems(); track cartitem) {
-        <div class="flex items-center justify-between mt-2 p-4 bg-white shadow-md rounded-xl w-full box-border">
+        <div class="flex items-center justify-between mt-2 p-2 bg-white shadow-md rounded-xl w-full box-border">
           <div class="flex items-center space-x-4">
             <img [src]="cartitem.item.image_url" alt="Meal" class="w-16 h-16 rounded-lg object-cover">
             <div>
@@ -56,9 +56,11 @@
               <p class="text-sm text-gray-800 font-medium">{{cartitem.item.price}}</p>
             </div>
           </div>
-          <button (click)="menusrv.decrement(cartitem)">-</button>
-          <span>{{ cartitem.quantity }}</span>
-          <button (click)="menusrv.increment(cartitem)">+</button>
+          <button class="mr-[2px]"
+          (click)="menusrv.decrement(cartitem)">-</button>
+          <span class="mr-[2px]" >{{ cartitem.quantity }}</span>
+          <button class="mr-[2px]"
+          (click)="menusrv.increment(cartitem)">+</button>
           <mat-icon class="text-red-500 hover:text-red-700 text-xl material-symbols-outlined"
             (click)="menusrv.removeFromCart(cartitem)">
             delete

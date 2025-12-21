@@ -3,6 +3,6 @@ import { Mart } from './Components/mart/mart';
 import { Menu } from './Components/menu/menu';
 
 export const routes: Routes = [
-    {path: '', component: Menu},
+    { path: '', component: Menu },
     { path: 'mart', component: Mart }
 ];
