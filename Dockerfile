@@ -1,19 +1,24 @@
-FROM node:24.11.1
+# ---------- Build stage ----------
+FROM node:24.11.1 AS build
 
-# Setup the working directory
 WORKDIR /app
-
-# Copy package.json and package-lock.json
+    
 COPY package.json package-lock.json ./
-
-# Install dependencies
 RUN npm install
-
-# Copy other files and folders to the working directory
+    
 COPY . .
-
-# Build Angular application in PROD mode
-# RUN npm run build
-
-# Start the app when container runs
-CMD ["npm", "run", "start:prod"]
+RUN npm run build
+    
+# ---------- Runtime stage ----------
+FROM nginx:alpine
+    
+# Nginx must listen on 8080 for Cloud Run
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+    
+# ⚠️ Change this if your dist folder name is different
+COPY --from=build /app/dist/Foodeta_UI/browser /usr/share/nginx/html
+    
+EXPOSE 8080
+    
+CMD ["nginx", "-g", "daemon off;"]
+    
