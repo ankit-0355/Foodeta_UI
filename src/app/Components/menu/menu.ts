@@ -42,19 +42,19 @@ export class Menu {
   }
 
   ngOnInit() {
-    // this.providers.set(PROVIDERS); // load all mock data
-    this.menusrv.callApi()
-    .pipe(delay(2000))
-    .subscribe({
-      next: (res) => {
-        console.log('Response:', res);
-        this.loading.set(false);
-        this.providers.set(res);
-      },
-      error: (err) => {console.error('API Error:', err)
-        this.loading.set(false);
-        this.OpenSnackBar("Failed to load data","OK");
-     }
-    });
+    this.providers.set(PROVIDERS); // load all mock data
+    // this.menusrv.callApi()
+    // .pipe(delay(2000))
+    // .subscribe({
+    //   next: (res) => {
+    //     console.log('Response:', res);
+    //     this.loading.set(false);
+    //     this.providers.set(res);
+    //   },
+    //   error: (err) => {console.error('API Error:', err)
+    //     this.loading.set(false);
+    //     this.OpenSnackBar("Failed to load data","OK");
+    //  }
+    // });
   }
 }
