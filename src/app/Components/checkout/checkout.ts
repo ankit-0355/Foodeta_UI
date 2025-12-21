@@ -1,8 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
 import { MenuService } from '../../services/menu-service';
 import { DecimalPipe } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { V } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-checkout',
@@ -16,10 +17,10 @@ export class Checkout {
   fb = inject(FormBuilder);
 
   checkoutForm = this.fb.group({
-    fullName: [''],
-    phone: [''],
-    email: [''],
-    address: [''],
+    fullName: ['', [Validators.required]],
+    phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+    email: ['', [Validators.required, Validators.email]],
+    address: ['', [Validators.required]],
     comments: ['']
   });
 
@@ -54,7 +55,7 @@ export class Checkout {
       this.menusrv.orderPlaced.update( v => !v);
       this.menusrv.orderflag();
     } else {
-      alert('Please fill in all required fields.');
+      // alert('Please fill in all required fields.');
     }
   }
 

@@ -36,6 +36,7 @@ export class MenuService {
   }
 
   addToCart(item: TiffinProvider) {
+    const qty=signal(0);
     this.cartItems.update(items => {
       const existingItem = items.find(i => i.item.service_id === item.service_id);
       if (existingItem) {

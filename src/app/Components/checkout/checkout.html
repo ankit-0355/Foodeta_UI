@@ -1,18 +1,38 @@
-<form [formGroup]="checkoutForm" class="bg-white shadow-md rounded-md w-120 h-160 flex flex-col items-center justify-center">
+<form [formGroup]="checkoutForm" class="bg-white shadow-md rounded-md w-full p-2 py-4 mx-2 flex flex-col">
     <div class="w-full px-6">
+        <div class="mb-4">
         <h4 class="font-medium">Full name *</h4>
-        <input type="text" class="border border-gray-300 rounded-md p-2 w-full mt-1 mb-4"
+        <input type="text" class="border border-gray-300 rounded-md p-2 w-full mt-1"
             placeholder="Enter your name" formControlName="fullName" />
+            @if(checkoutForm.get('fullName')?.invalid && checkoutForm.get('fullName')?.touched) {
+                <div class="text-red-500 text-sm">Full name is required.</div>
+            }
+        </div>
+        <div class="mb-4">   
         <h4 class="font-medium">Phone number *</h4>
-        <input type="text" class="border border-gray-300 rounded-md p-2 w-full mt-1 mb-4"
+        <input type="text" class="border border-gray-300 rounded-md p-2 w-full mt-1 "
             placeholder="+1 123-343-3467" formControlName="phone"/>
+            @if(checkoutForm.get('phone')?.invalid && checkoutForm.get('phone')?.touched) {
+                <div class="text-red-500 text-sm mb-4">Phone number is required.</div>
+            }
+        </div>
+        <div class="mb-4">
         <h4 class="font-medium">Email *</h4>
-        <input type="email" class="border border-gray-300 rounded-md p-2 w-full mt-1 mb-4"
+        <input type="email" class="border border-gray-300 rounded-md p-2 w-full mt-1"
             placeholder="your@email.com" formControlName="email"/>
+            @if(checkoutForm.get('email')?.invalid && checkoutForm.get('email')?.touched) {
+                <div class="text-red-500 text-sm mb-4">Valid email is required.</div>
+            }
+        </div>
+        <div class="mb-4">
         <h4 class="font-medium">Delivery Address *</h4>
-        <textarea type="text" class="border border-gray-300 rounded-md p-2 w-full mt-1 mb-4"
+        <textarea type="text" class="border border-gray-300 rounded-md p-2 w-full mt-1"
             placeholder="Enter your complete delivery address including postal code"
             formControlName="address"></textarea>
+            @if(checkoutForm.get('address')?.invalid && checkoutForm.get('address')?.touched) {
+                <div class="text-red-500 text-sm mb-4">Delivery address is required.</div>
+            }
+        </div>
         <h4 class="font-medium">Comments</h4>
         <textarea type="text" class="border border-gray-300 rounded-md p-2 w-full mt-1 mb-4"
             placeholder="Additional Notes" formControlName="comments"></textarea>

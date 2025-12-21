@@ -84,13 +84,47 @@
       </div>
 
       <!-- CTA -->
-      <button
-        class="mt-4 w-full py-2 text-sm font-medium rounded-lg bg-black text-white hover:opacity-90
-        active:scale-95"
-        (click)="this.menusrv.addToCart(p)"
-        >
-        Add to Cart
-      </button>
+      <div class="mt-4 flex items-center justify-between">
+        @if(this.getQuantity(p.service_id)>0) {
+          <button class='text-xl ml-[30%] text-black flex items-center justify-center' 
+          (click)="this.menusrv.decrement(getci(p.service_id))">-</button>
+          <span class="text-xl font-semibold">{{ this.getQuantity(p.service_id) }}</span>
+          <button class='text-xl mr-[30%] text-black flex items-center justify-center' 
+          (click)="this.menusrv.increment(getci(p.service_id))">+</button>
+        } @else {
+          <button class="w-full py-2 text-sm font-medium rounded-lg bg-black text-white 
+          hover:opacity-90 active:scale-95"
+          (click)="this.menusrv.addToCart(p)"
+          >
+            Add to Cart
+          </button>
+        }
+      </div>
+      <!-- <div class="mt-4 w-full text-sm font-medium rounded-lg bg-black text-white 
+            flex items-center justify-center hover:opacity-90 transition duration-150">
+
+  @if(this.getQuantity(p.service_id)>0) {
+    <button 
+      class="px-3 py-1 bg-gray-800 rounded hover:bg-gray-700 transition"
+      (click)="this.menusrv.decrement(getci(p.service_id))"
+    >-</button>
+
+    <span class="px-3">{{ this.getQuantity(p.service_id) }}</span>
+
+    <button 
+      class="px-3 py-1 bg-gray-800 rounded hover:bg-gray-700 transition"
+      (click)="this.menusrv.increment(getci(p.service_id))"
+    >+</button>
+  } @else {
+    <button 
+      class="w-full py-2 rounded-lg bg-green-600 hover:bg-green-500 active:scale-95 transition duration-150"
+      (click)="this.menusrv.addToCart(p)"
+    >
+      Add to Cart
+    </button>
+  }
+</div> -->
+
     </div>
   </div>
 }

@@ -1,12 +1,13 @@
 
 import { Component, computed, inject, signal } from '@angular/core';
-import { TiffinProvider } from '../../model/models';
+import { CartItem, TiffinProvider } from '../../model/models';
 import { MenuService } from '../../services/menu-service';
 import { DatePipe } from '@angular/common';
 import { PROVIDERS } from '../../model/mock_data';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { MatIcon } from "@angular/material/icon";
+import { delay } from 'rxjs';
 
 
 @Component({
@@ -19,11 +20,16 @@ import { MatIcon } from "@angular/material/icon";
 export class Menu {
   providers = signal <TiffinProvider[]>([]);        // signal to hold tiffin providers
   menusrv = inject(MenuService);
-  loading = signal(false);
+  loading = signal(false);                     // signal to indicate loading state
 
-  getQuantity(serviceId: string): number {
+  getQuantity(serviceId: string,op?:string): number {
     const ci = this.menusrv.cartItems().find(ci => ci.item.service_id === serviceId);
     return ci ? ci.quantity : 0;
+  }
+
+  getci(serviceId: string): any {
+    const ci = this.menusrv.cartItems().find(ci => ci.item.service_id === serviceId);
+    return ci;
   }
 
   OpenSnackBar(message: string, action: string) {
