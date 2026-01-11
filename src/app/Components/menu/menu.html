@@ -1,24 +1,29 @@
 <!-- <h2 class="text-xl font-semibold mb-4 pl-2">All Tiffin Providers</h2> -->
 @if(loading()) {
-  <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
 }
 
 @if(this.menusrv.orderPlaced()) {
-  <div class="fixed inset-0 z-34 flex items-center justify-center 
-    bg-black/70 text-white text-2xl font-semibold animate-fade-in"> 
-    <mat-icon class="!text-6xl mr-2 !text-green-500 !h-15 !w-14
+<div class="fixed inset-0 z-34 flex items-center justify-center 
+    bg-black/70 text-white text-2xl font-semibold animate-fade-in">
+  <mat-icon class="!text-6xl mr-2 !text-green-500 !h-15 !w-14
     material-symbols-outlined animate-pop">
-      check_circle</mat-icon>  
-    <span>Order Placed Successfully!</span>
-  </div>
-} 
+    check_circle</mat-icon>
+  <span>Order Placed Successfully!</span>
+</div>
+}
+
+@if(this.menusrv.showExtras()) {
+  <app-extras></app-extras>
+}
+
 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 p-2">
-  
+
   @for (p of providers(); track p)
   {
   <div class="bg-white shadow-md rounded-xl overflow-hidden flex flex-col">
     <!-- Image -->
-    <img [src]="p.image_url" [alt]="p.service_name" class="h-40 w-full object-cover"/>
+    <img [src]="p.image_url" [alt]="p.service_name" class="h-40 w-full object-cover" />
 
     <!-- Card body -->
     <div class="p-4 flex-1 flex flex-col">
@@ -44,7 +49,7 @@
         <span class="text-xs px-2 py-1 rounded-full bg-orange-50 text-orange-700 border border-orange-200">
           {{ tag }}
         </span>
-      }
+        }
       </div>
 
       <!-- Today's Menu -->
@@ -64,9 +69,9 @@
             <span class="text-gray-600 text-xs block">
               {{ item.description }}
             </span>
-          }
+            }
           </li>
-        }
+          }
         </ul>
       </section>
 
@@ -80,25 +85,23 @@
           <span>, </span>
           }
         </span>
-      }
+        }
       </div>
 
       <!-- CTA -->
       <div class="mt-4 flex items-center justify-between">
-        @if(this.getQuantity(p.service_id)>0) {
-          <button class='text-xl ml-[30%] text-black flex items-center justify-center' 
+        <!-- @if(this.getQuantity(p.service_id)>0) {
+        <button class='text-xl ml-[30%] text-black flex items-center justify-center'
           (click)="this.menusrv.decrement(getci(p.service_id))">-</button>
-          <span class="text-xl font-semibold">{{ this.getQuantity(p.service_id) }}</span>
-          <button class='text-xl mr-[30%] text-black flex items-center justify-center' 
+        <span class="text-xl font-semibold">{{ this.getQuantity(p.service_id) }}</span>
+        <button class='text-xl mr-[30%] text-black flex items-center justify-center'
           (click)="this.menusrv.increment(getci(p.service_id))">+</button>
-        } @else {
-          <button class="w-full py-2 text-sm font-medium rounded-lg bg-black text-white 
-          hover:opacity-90 active:scale-95"
-          (click)="this.menusrv.addToCart(p)"
-          >
-            Add to Cart
-          </button>
-        }
+        } @else { -->
+        <button class="w-full py-2 text-sm font-medium rounded-lg bg-black text-white 
+          hover:opacity-90 active:scale-95" (click)="this.menusrv.extrasDialog(p)">
+          Add to Cart
+        </button>
+        <!-- } -->
       </div>
       <!-- <div class="mt-4 w-full text-sm font-medium rounded-lg bg-black text-white 
             flex items-center justify-center hover:opacity-90 transition duration-150">
@@ -127,5 +130,5 @@
 
     </div>
   </div>
-}
+  }
 </div>

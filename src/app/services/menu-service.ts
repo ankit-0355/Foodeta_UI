@@ -1,7 +1,7 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TiffinProvider, CartItem } from '../model/models';
-import { FocusNext } from '@angular/cdk/menu';
+import { TiffinProvider, CartItem, CartExtra } from '../model/models';
+import { Extras } from '../Components/extras/extras';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +11,17 @@ export class MenuService {
   cartOpen = signal(false);
   sidebarOpen = signal(false);
   cartItems = signal<CartItem[]>([]); // Signal to hold cart items
-  total = signal(0); // Signal to hold total price
+  total = signal(0); // Signal to hold total price of a single tiffin
+  grandTotal = signal(0); // Signal to hold grand total price of cart
   showCheckout = signal(false);
   quantity = signal(0);
   orderPlaced = signal(false);
+  showExtras = signal(false);
+  tiffinItem = signal<any>(null);
+  cartextra = signal<CartExtra[]>([]); // Signal to hold extras for cart items
+  extraQuantities = computed(() =>
+    new Map(this.cartextra().map(e => [e.item, e.quantity]))
+  );
 
 
   constructor() {
@@ -35,55 +42,80 @@ export class MenuService {
     document.body.classList.toggle('no-scroll', this.sidebarOpen());
   }
 
-  addToCart(item: TiffinProvider) {
-    const qty=signal(0);
-    this.cartItems.update(items => {
+  addToCart(item: TiffinProvider) { 
+    this.showExtras.update(v => !v) 
+    this.cartItems.update(items => { 
       const existingItem = items.find(i => i.item.service_id === item.service_id);
-      if (existingItem) {
-        // If item already exists in cart, increase quantity
-        existingItem.quantity += 1;
-        this.quantity.update(q => q + 1);
-      } else {
-        // If item does not exist, add new item with quantity 1
-        items.push({ item, quantity: 1 });
-        this.quantity.update(q => q + 1);
-      }
-      this.total.update(total => total + item.price);
-      // setTimeout(() => {
-      //   this.addedMap.update(m => ({
-      //     ...m,
-      //     [item.service_id]: false
-      //   }));
-      // }, 800);
-      return items;
-    });
-    
-  }
+      items.push({item, cartItemId: items.length + 1, extras: this.cartextra()}); 
+      this.quantity.update(q => q + 1); 
+
+      this.grandTotal.update(grandTotal => grandTotal + this.total());
+      return items; 
+    }); 
+    }
+
+  extrasDialog(item: TiffinProvider) { 
+    this.cartextra.set([]);
+    this.tiffinItem.set(item); 
+    this.showExtras.update(v => !v);
+     document.body.classList.toggle('no-scroll', this.showExtras()); 
+     this.total.update(total => item.price);
+     }
 
   removeFromCart(ci: CartItem) {
-    this.total.update(total => total - ci.item.price*ci.quantity);
+    this.grandTotal.update(grandTotal => grandTotal - ci.item.price);
     this.cartItems.update(items => {
-      return items.filter(i => i.item.service_id !== ci.item.service_id);
+      return items.filter(i => i !== ci);
     });
-    this.quantity.update(q => q - ci.quantity);
   }
 
-  increment(ci: CartItem) {
-    ci.quantity += 1;
-    this.total.update(total => total + ci.item.price);
-    this.quantity.update(q => q + 1);
+  incrementExtra(extra: any) {
+    this.cartextra.update(extras => {
+      const existing = extras.find(e => e.item === extra.item);
+  
+      if (existing) {
+        // increment quantity if already exists
+        return extras.map(e =>
+          e.item === extra.item
+            ? { ...e, quantity: e.quantity + 1 }
+            : e
+        );
+      }
+  
+      // copy item & price, add quantity
+      return [
+        ...extras,
+        {
+          item: extra.item,
+          price: extra.price,
+          quantity: 1
+        }
+      ];
+    });
+  
+    this.total.update(total => total + extra.price);
   }
+  
 
-  decrement(ci: CartItem) {
-    if(ci.quantity <= 1) {
-      this.cartItems.update(items => {
-        return items.filter(i => i.item.service_id !== ci.item.service_id);
-      });
+    decrementExtra(extra: {item: string; price: number}) {
+      this.cartextra.update(extras => {
+        const existing = extras.find(e => e.item === extra.item);
+  
+        if (existing && existing.quantity >= 1) {
+          this.total.update(total => total - extra.price);
+          // decrement quantity if more than 1
+          return extras.map(e =>
+            e.item === extra.item
+              ? { ...e, quantity: e.quantity - 1 }
+              : e
+          );
+        } 
+        return extras;
+      }
+       
+      );
+
     }
-    ci.quantity -= 1;
-    this.total.update(total => total - ci.item.price);
-    this.quantity.update(q => q - 1);
-  }
 
   checkout() {
     this.showCheckout.update(v => !v);

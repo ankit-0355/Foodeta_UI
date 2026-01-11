@@ -1,0 +1,73 @@
+@if(this.menusrv.showExtras()){
+<div class="fixed inset-0 bg-black/70 z-5 flex items-center justify-center"
+    (click)="this.menusrv.extrasDialog(this.menusrv.tiffinItem())">
+    <div class="bg-white p-4 rounded-lg fixed z-10 w-[60%] max-w-lg" (click)="$event.stopPropagation()">
+        <div class=mb-4>
+            <span class="text-lg font-semibold">
+                Customize Your Order
+            </span>
+            <p>{{this.menusrv.tiffinItem().service_name}}</p>
+        </div>
+        <p class="text-lg font-semibold mb-2">
+            Add Extras
+        </p>
+        @if(this.menusrv.tiffinItem().items.extras?.length === 0) {
+        <p>No Extra Item Available</p>
+        } @else {
+        <ul class="w-full border rounded-xl divide-y">
+            @for(extraItem of this.menusrv.tiffinItem().items.extras; track extraItem) {
+            <li class="flex items-center justify-between px-4 py-3">
+
+                <!-- Left content -->
+                <div>
+                    <p class="font-medium">{{ extraItem.item }}</p>
+                    <p class="text-sm text-gray-500">$ {{ extraItem.price | number:'1.2'}}/piece</p>
+                </div>
+
+                <!-- Quantity controls -->
+                <div class="flex items-center gap-3">
+                    <!-- Minus -->
+                    <button class="w-9 h-9 flex items-center justify-center border 
+                    border-gray-300 rounded-full text-xl font-medium text-gray-600
+                    hover:bg-gray-100" (click)="this.menusrv.decrementExtra(extraItem)">
+                        &minus;
+                    </button>
+
+                    <!-- Count -->
+                    <span class="w-4 text-center font-semibold text-gray-800">
+                        {{ this.menusrv.extraQuantities().get(extraItem.item) ?? 0 }}
+                    </span>
+
+                    <!-- Plus -->
+                    <button class="w-9 h-9 flex items-center justify-center border 
+                    border-gray-300 rounded-full text-xl font-medium text-gray-600
+                    hover:bg-gray-100" (click)="this.menusrv.incrementExtra(extraItem)">
+                        &plus;
+                    </button>
+                </div>
+
+            </li>
+            }
+        </ul>
+        }
+
+        <div class="mt-4 text-right">
+            <span class="text-lg font-semibold">
+                Total: $ {{ this.menusrv.total() | number:'1.2' }}
+            </span>
+        </div>
+
+        <div class="mt-6 flex justify-end gap-4">
+            <button class="px-4 py-2 rounded-lg border border-gray-300 
+            text-gray-700 hover:bg-gray-100 active:scale-95 transition"
+                (click)="this.menusrv.extrasDialog(this.menusrv.tiffinItem())">
+                Cancel
+            </button>
+            <button class="px-4 py-2 rounded-lg bg-black text-white 
+            hover:bg-gray-700 active:scale-95 transition" (click)="this.menusrv.addToCart(this.menusrv.tiffinItem())">
+                Add to Cart
+            </button>
+        </div>
+    </div>
+</div>
+}

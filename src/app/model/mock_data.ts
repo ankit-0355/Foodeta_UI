@@ -44,6 +44,16 @@ export const PROVIDERS: TiffinProvider[] = [
               {
                   "name": "Shrikhand"
               }
+          ],
+          extras: [
+                {
+                    item: "Extra Roti",
+                    price: 1.50,
+                },
+                {
+                    item: "Papad",
+                    price: 0.75,
+                }
           ]
       }
   },

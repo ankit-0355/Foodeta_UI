@@ -25,13 +25,24 @@ export interface TiffinProvider {
       name: string;
       description?: string;
     }[];
+    extras?: {
+      item: string;
+      price: number;
+    }[];
   };
 
   // Delivery Areas
   delivery_areas: string[];    // ["Brampton", "Mississauga", "Malton"]
 }
 
-export interface CartItem {
-  item: TiffinProvider;
+export interface CartExtra {
+  item: string;
+  price: number;
   quantity: number;
+}
+
+export interface CartItem {
+  cartItemId: Number;
+  item: TiffinProvider;
+  extras?: CartExtra[];
 }

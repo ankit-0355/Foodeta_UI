@@ -31,9 +31,9 @@ export class Checkout {
         service_detail: this.menusrv.cartItems().map(ci => ({
           service_id: ci.item.service_id,
           service_name: ci.item.service_name,
-          quantity: ci.quantity,
+          // quantity: ci.quantity,
           price_per_item: ci.item.price,
-          total_price: ci.item.price * ci.quantity
+          total_price: ci.item.price
         })),
         totalAmount: this.menusrv.total()
       };
