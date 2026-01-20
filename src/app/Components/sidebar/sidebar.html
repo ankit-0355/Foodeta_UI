@@ -34,6 +34,19 @@
         [class.text-orange-700]="active === 'supermart'">
         Supermart
     </a>
+
+    <a [routerLink]="['/register']" class="w-full items-center hover:bg-gray-100 p-2"
+        (click)="active = 'Register'"
+        [class.bg-orange-50]="active === 'Register'"
+        [class.text-orange-700]="active === 'Register'">
+        Register Tiffin Service
+    </a>
+    <a [routerLink]="['/dashboard']" class="w-full items-center hover:bg-gray-100 p-2"
+        (click)="active = 'Dashboard'"
+        [class.bg-orange-50]="active === 'Dashboard'"
+        [class.text-orange-700]="active === 'Dashboard'">
+        Dashboard
+    </a>
   </nav>
 
 </div>

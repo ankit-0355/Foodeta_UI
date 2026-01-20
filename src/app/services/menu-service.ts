@@ -63,7 +63,8 @@ export class MenuService {
      }
 
   removeFromCart(ci: CartItem) {
-    this.grandTotal.update(grandTotal => grandTotal - ci.item.price);
+    this.grandTotal.update(grandTotal => grandTotal - (ci.item.price + ci.extras?.filter(e => e.quantity > 0).reduce((sum, e) => sum + (e.price * e.quantity), 0)!));
+    this.quantity.update(q => q - 1);
     this.cartItems.update(items => {
       return items.filter(i => i !== ci);
     });

@@ -1,9 +1,10 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { MenuService } from '../../services/menu-service';
 import { DecimalPipe } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { V } from '@angular/cdk/keycodes';
+
+declare const google: any;
 
 @Component({
   selector: 'app-checkout',
@@ -16,6 +17,9 @@ export class Checkout {
   http = inject(HttpClient);
   fb = inject(FormBuilder);
 
+  @ViewChild('addressInput') addressInput!: ElementRef<HTMLInputElement>;
+  autocomplete!: any;
+
   checkoutForm = this.fb.group({
     fullName: ['', [Validators.required]],
     phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
@@ -24,6 +28,32 @@ export class Checkout {
     comments: ['']
   });
 
+
+
+  ngAfterViewInit(): void {
+    this.autocomplete = new google.maps.places.Autocomplete(
+      this.addressInput.nativeElement,
+      {
+        types: ['address'],
+        componentRestrictions: { country: 'ca' }
+      }
+    );
+
+    this.autocomplete.addListener('place_changed', () => {
+      const place = this.autocomplete.getPlace();
+
+      if (!place.formatted_address) return;
+
+      this.checkoutForm.patchValue({
+        address: place.formatted_address
+      });
+
+      // Optional: store lat/lng if needed later
+      // const lat = place.geometry?.location?.lat();
+      // const lng = place.geometry?.location?.lng();
+    });
+  }
+
   placeOrder() {
     if (this.checkoutForm.valid) {
       const orderDetails = {
@@ -31,7 +61,6 @@ export class Checkout {
         service_detail: this.menusrv.cartItems().map(ci => ({
           service_id: ci.item.service_id,
           service_name: ci.item.service_name,
-          // quantity: ci.quantity,
           price_per_item: ci.item.price,
           total_price: ci.item.price
         })),

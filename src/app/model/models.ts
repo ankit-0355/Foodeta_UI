@@ -46,3 +46,22 @@ export interface CartItem {
   item: TiffinProvider;
   extras?: CartExtra[];
 }
+
+export interface RegistrationData {
+  bussiness_name: string;
+  owner_name: string;
+  phone_number: string;
+  email: string;
+  password: string;
+  address: string;
+  description: string;
+  image_url: string;
+}
+
+export interface ProfileData {
+  business_name: string;
+  description: string;
+  email: string;
+  phone_number: string;
+  address: string;
+}

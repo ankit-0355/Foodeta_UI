@@ -24,11 +24,6 @@ export class Menu {
   router = inject(Router);
   _snackBar = inject(MatSnackBar);
 
-  // getQuantity(serviceId: string,op?:string): number {
-  //   const ci = this.menusrv.cartItems().find(ci => ci.item.service_id === serviceId);
-  //   return ci ? ci.quantity : 0;
-  // }
-
   getci(serviceId: string): any {
     const ci = this.menusrv.cartItems().find(ci => ci.item.service_id === serviceId);
     return ci;

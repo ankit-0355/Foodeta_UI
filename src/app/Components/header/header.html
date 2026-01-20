@@ -2,7 +2,7 @@
     <button class="flex items-center justify-center p-2 cursor-pointer" (click)="this.menusrv.toggleSidenav()">
         <mat-icon class="material-symbols-outlined">menu</mat-icon>
     </button>
-    <div class ="flex items-center flex-grow">
+    <div class="flex items-center flex-grow">
         <div class="bg-[#FF6900] rounded-sm p-1 mr-2 box-border">
             <mat-icon class="meal_icon material-symbols-outlined">local_dining</mat-icon>
         </div>
@@ -11,13 +11,17 @@
             <span class="text-sm text-gray-600">Authentic Indian tiffin service in Canada</span>
         </div>
     </div>
+    @if (!router.url.startsWith('/dashboard') &&
+    !router.url.startsWith('/register'))
+    {
     <button (click)="this.menusrv.toggleCart()" class="flex items-center justify-center p-2">
         <mat-icon class="cart_icon material-symbols-outlined">local_grocery_store</mat-icon>
         @if(menusrv.quantity() > 0) {
-            <span class="absolute top-[12px] bg-orange-500 text-white text-xs 
+        <span class="absolute top-[12px] bg-orange-500 text-white text-xs 
             rounded-full h-5 w-5 flex items-center justify-center">
-                {{ menusrv.quantity() }}
-            </span>
+            {{ menusrv.quantity() }}
+        </span>
         }
     </button>
+    }
 </div>

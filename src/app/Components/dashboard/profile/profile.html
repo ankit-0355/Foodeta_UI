@@ -1,0 +1,114 @@
+<!-- PAGE WRAPPER -->
+<div class="max-w-6xl mx-auto px-4 py-6">
+    
+    <!-- PROFILE CARD -->
+    <div class="bg-white rounded-2xl border p-6">
+  
+      <!-- CARD HEADER -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-lg font-semibold">Profile Information</h2>
+          <p class="text-sm text-gray-500">
+            Update your business details
+          </p>
+        </div>
+  
+        <div class="flex gap-3">
+          @if(editProfile()) {
+          <button
+            type="button"
+            class="px-4 py-2 rounded-lg border text-sm font-medium hover:bg-gray-50"
+            (click)="toggleEdit()"
+          >
+            Cancel
+          </button>
+  
+          <button
+            type="button"
+            class="px-4 py-2 rounded-lg bg-black text-white text-sm font-medium hover:opacity-90 flex items-center gap-2"
+            (click)="saveProfile()"
+          >
+            💾 Save Profile
+          </button>
+        } @else {
+          <button
+            type="button"
+            class="px-4 py-2 rounded-lg bg-black text-white text-sm font-medium hover:opacity-90 flex items-center gap-2"
+            (click)="toggleEdit()"
+          >
+            Edit
+          </button>
+        }
+        </div>
+      </div>
+  
+      <!-- FORM -->
+      <div class="flex flex-col gap-5">
+  
+        <!-- Business Name -->
+        <div>
+          <label class="block text-sm font-medium mb-1">
+            Business Name
+          </label>
+          <input [field]="profile_form.business_name"
+            type="text"
+            class="w-full rounded-lg bg-gray-100 px-4 py-3 text-sm outline-none"
+            placeholder="Ex: Gujarat Tiffin Services"
+          />
+        </div>
+  
+        <!-- Description -->
+        <div>
+          <label class="block text-sm font-medium mb-1">
+            Description
+          </label>
+          <textarea [field]="profile_form.description"
+            rows="4"
+            class="w-full rounded-lg bg-gray-100 px-4 py-3 text-sm outline-none resize-none"
+            placeholder="Brief description about your business..."
+          >
+          </textarea>
+        </div>
+  
+        <!-- Location -->
+          <div class="flex-1">
+            <label class="block text-sm font-medium mb-1">
+              Location
+            </label>
+            <input [field]="profile_form.address"
+              type="text"
+              class="w-full rounded-lg bg-gray-100 px-4 py-3 text-sm outline-none"
+            />
+          </div>
+
+        <!-- Email and phone number -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <div class="flex-1">
+            <label class="block text-sm font-medium mb-1">
+              Email
+            </label>
+            <input [field]="profile_form.email"
+              type="text"
+              class="w-full rounded-lg bg-gray-100 px-4 py-3 text-sm outline-none"
+              placeholder="your@email.com"
+            />
+          </div>
+
+          
+  
+          <div class="flex-1">
+            <label class="block text-sm font-medium mb-1">
+              Phone Number
+            </label>
+            <input [field]="profile_form.phone_number"
+              type="number"
+              class="w-full rounded-lg bg-gray-100 px-4 py-3 text-sm outline-none"
+              placeholder="+1 (XXX) XXX-XXXX"
+            />
+          </div>
+       </div>
+  
+      </div>
+    </div>
+  </div>
+  

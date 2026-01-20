@@ -26,9 +26,10 @@
         </div>
         <div class="mb-4">
         <h4 class="font-medium">Delivery Address *</h4>
-        <textarea type="text" class="border border-gray-300 rounded-md p-2 w-full mt-1"
+        <input type="text" class="border border-gray-300 rounded-md p-2 w-full mt-1"
             placeholder="Enter your complete delivery address including postal code"
-            formControlName="address"></textarea>
+            #addressInput
+            formControlName="address"/>
             @if(checkoutForm.get('address')?.invalid && checkoutForm.get('address')?.touched) {
                 <div class="text-red-500 text-sm mb-4">Delivery address is required.</div>
             }
