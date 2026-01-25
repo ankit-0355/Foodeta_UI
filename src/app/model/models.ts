@@ -8,15 +8,15 @@ export interface TiffinProvider {
   image_url: string;
 
   // Ratings & Pricing
-  rating: number;
-  review_count: number;
+  // rating: number;
+  // review_count: number;
   price: number;
 
   // Location
   location: string;           // e.g. "Brampton, ON"
 
   // Tags
-  tags: string[];             // ["Gujarati", "Vegetarian"]
+  // tags: string[];             // ["Gujarati", "Vegetarian"]
 
   // Today's Menu (Flat structure)
   items: {
@@ -32,7 +32,7 @@ export interface TiffinProvider {
   };
 
   // Delivery Areas
-  delivery_areas: string[];    // ["Brampton", "Mississauga", "Malton"]
+  // delivery_areas: string[];    // ["Brampton", "Mississauga", "Malton"]
 }
 
 export interface CartExtra {
@@ -48,7 +48,7 @@ export interface CartItem {
 }
 
 export interface RegistrationData {
-  bussiness_name: string;
+  business_name: string;
   owner_name: string;
   phone_number: string;
   email: string;
@@ -64,4 +64,16 @@ export interface ProfileData {
   email: string;
   phone_number: string;
   address: string;
+}
+
+export interface itemDesc {
+  name: string;
+  description: string;
+}
+
+export interface extraItem{
+  name: string,
+  price: number 
+  qty:number 
+  unit: string
 }

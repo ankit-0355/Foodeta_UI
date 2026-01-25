@@ -1,5 +1,5 @@
 <!-- <h2 class="text-xl font-semibold mb-4 pl-2">All Tiffin Providers</h2> -->
-@if(loading()) {
+@if(menusrv.loading()) {
 <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
 }
 
@@ -19,7 +19,7 @@
 
 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 p-2">
 
-  @for (p of providers(); track p)
+  @for (p of menusrv.providers(); track p)
   {
   <div class="bg-white shadow-md rounded-xl overflow-hidden flex flex-col">
     <!-- Image -->
@@ -37,20 +37,20 @@
 
       <!-- Rating / price / location -->
       <div class="mt-3 text-sm text-gray-700 flex flex-wrap gap-x-3 gap-y-1">
-        <span>⭐ {{ p.rating }} ({{ p.review_count }} reviews)</span>
+        <!-- <span>⭐ {{ p.rating }} ({{ p.review_count }} reviews)</span> -->
         <span>• ${{ p.price }}/day</span>
-        <span>• {{ p.location }}</span>
+        <!-- <span>• {{ p.location }}</span> -->
       </div>
 
       <!-- Tags -->
-      <div class="mt-3 flex flex-wrap gap-2">
+      <!-- <div class="mt-3 flex flex-wrap gap-2">
         @for ( tag of p.tags; track tag)
         {
         <span class="text-xs px-2 py-1 rounded-full bg-orange-50 text-orange-700 border border-orange-200">
           {{ tag }}
         </span>
         }
-      </div>
+      </div> -->
 
       <!-- Today's Menu -->
       <section class="mt-4 bg-orange-50 rounded-lg p-3 text-sm h-60 overflow-y-auto">
@@ -76,7 +76,7 @@
       </section>
 
       <!-- Delivery areas -->
-      <div class="mt-3 text-xs text-gray-600">
+      <!-- <div class="mt-3 text-xs text-gray-600">
         Delivers to:
         @for ( area of p.delivery_areas; track area) {
         <span>
@@ -86,7 +86,7 @@
           }
         </span>
         }
-      </div>
+      </div> -->
 
       <!-- CTA -->
       <div class="mt-4 flex items-center justify-between">

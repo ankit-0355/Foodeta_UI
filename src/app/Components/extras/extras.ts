@@ -12,5 +12,4 @@ import { TiffinProvider } from '../../model/models';
 export class Extras {
   menusrv = inject(MenuService)
   tiffinitem = signal<TiffinProvider>(this.menusrv.tiffinItem());
-
 }

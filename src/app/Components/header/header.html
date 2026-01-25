@@ -12,7 +12,7 @@
         </div>
     </div>
     @if (!router.url.startsWith('/dashboard') &&
-    !router.url.startsWith('/register'))
+    !router.url.startsWith('/register') && !router.url.startsWith('/login') )
     {
     <button (click)="this.menusrv.toggleCart()" class="flex items-center justify-center p-2">
         <mat-icon class="cart_icon material-symbols-outlined">local_grocery_store</mat-icon>

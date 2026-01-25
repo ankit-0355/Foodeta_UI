@@ -35,7 +35,7 @@
         Supermart
     </a>
 
-    <a [routerLink]="['/register']" class="w-full items-center hover:bg-gray-100 p-2"
+    <!-- <a [routerLink]="['/register']" class="w-full items-center hover:bg-gray-100 p-2"
         (click)="active = 'Register'"
         [class.bg-orange-50]="active === 'Register'"
         [class.text-orange-700]="active === 'Register'">
@@ -46,6 +46,12 @@
         [class.bg-orange-50]="active === 'Dashboard'"
         [class.text-orange-700]="active === 'Dashboard'">
         Dashboard
+    </a> -->
+    <a [routerLink]="['/login']" class="w-full items-center hover:bg-gray-100 p-2"
+      (click)="active = 'Login'"
+      [class.bg-orange-50]="active === 'Login'"
+      [class.text-orange-700]="active === 'Login'">
+      Login
     </a>
   </nav>
 

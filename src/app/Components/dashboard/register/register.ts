@@ -1,10 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { MatIcon } from "@angular/material/icon";
-import { RegistrationData } from '../../model/models';
+import { RegistrationData } from '../../../model/models';
 import { form, Field } from '@angular/forms/signals';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -33,7 +34,7 @@ export class Register {
 // }
 
   rData = signal<RegistrationData>({
-    bussiness_name: '',
+    business_name: '',
     owner_name: '',
     phone_number: '',
     email: '',
@@ -48,7 +49,7 @@ export class Register {
   onSubmit() {
     console.log('Registration Data:', this.rData());
     // const url="https://foddeta-backend-1030483456536.northamerica-northeast2.run.app/register"
-    const url="http://127.0.0.1:8080/register"
+    const url=`${environment.baseUrl}/register`
     this.http.post(url, this.rData())
     .pipe()
     .subscribe({
@@ -57,7 +58,7 @@ export class Register {
                 duration: 3000 
               });
               setTimeout(() => {
-                this.router.navigate(['/dashboard']);
+                this.router.navigate(['/login']);
               }, 2000);
               console.log('Order placed successfully:', res);
             },

@@ -11,17 +11,17 @@
         <p class="text-lg font-semibold mb-2">
             Add Extras
         </p>
-        @if(this.menusrv.tiffinItem().items.extras?.length === 0) {
+        @if(this.menusrv.tiffinItem().extras?.length === 0) {
         <p>No Extra Item Available</p>
         } @else {
         <ul class="w-full border rounded-xl divide-y">
-            @for(extraItem of this.menusrv.tiffinItem().items.extras; track extraItem) {
+            @for(extraItem of this.menusrv.tiffinItem().extras; track extraItem) {
             <li class="flex items-center justify-between px-4 py-3">
 
                 <!-- Left content -->
                 <div>
-                    <p class="font-medium">{{ extraItem.item }}</p>
-                    <p class="text-sm text-gray-500">$ {{ extraItem.price | number:'1.2'}}/piece</p>
+                    <p class="font-medium">{{ extraItem.name }}</p>
+                    <p class="text-sm text-gray-500">$ {{ extraItem.price | number:'1.2'}}/{{extraItem.qty}} {{extraItem.unit}}</p>
                 </div>
 
                 <!-- Quantity controls -->
@@ -35,7 +35,7 @@
 
                     <!-- Count -->
                     <span class="w-4 text-center font-semibold text-gray-800">
-                        {{ this.menusrv.extraQuantities().get(extraItem.item) ?? 0 }}
+                        {{ this.menusrv.extraQuantities().get(extraItem.name) ?? 0 }}
                     </span>
 
                     <!-- Plus -->

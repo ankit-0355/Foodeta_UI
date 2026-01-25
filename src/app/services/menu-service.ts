@@ -1,13 +1,16 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TiffinProvider, CartItem, CartExtra } from '../model/models';
+import { TiffinProvider, CartItem, CartExtra, extraItem } from '../model/models';
 import { Extras } from '../Components/extras/extras';
+import { delay } from 'rxjs';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MenuService {
   http = inject(HttpClient);
+  snackBar = inject(MatSnackBar);
   cartOpen = signal(false);
   sidebarOpen = signal(false);
   cartItems = signal<CartItem[]>([]); // Signal to hold cart items
@@ -18,18 +21,38 @@ export class MenuService {
   orderPlaced = signal(false);
   showExtras = signal(false);
   tiffinItem = signal<any>(null);
+  loading = signal(true);
+  providers = signal <TiffinProvider[]>([]);    
   cartextra = signal<CartExtra[]>([]); // Signal to hold extras for cart items
   extraQuantities = computed(() =>
     new Map(this.cartextra().map(e => [e.item, e.quantity]))
   );
 
 
-  constructor() {
-    this.callApi();
+  // constructor() {
+  //   this.callApi();
+  // }
+
+  OpenSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
   }
 
-  callApi() {
-    return this.http.get<TiffinProvider[]>('https://foddeta-backend-1030483456536.northamerica-northeast2.run.app/database');
+  callApi(url:any) {
+    // return this.http.get<TiffinProvider[]>('https://foddeta-backend-1030483456536.northamerica-northeast2.run.app/database');
+    this.http.get<TiffinProvider[]>(url).pipe(delay(2000))
+      .subscribe({
+      next: (res) => {
+        console.log('Response:', res);
+        this.loading.set(false);
+        this.providers.set(res);
+      },
+      error: (err) => {console.error('API Error:', err)
+        this.loading.set(false);
+        this.OpenSnackBar("Failed to load data","OK");
+      }
+    });
   }
 
   toggleCart() {
@@ -57,10 +80,11 @@ export class MenuService {
   extrasDialog(item: TiffinProvider) { 
     this.cartextra.set([]);
     this.tiffinItem.set(item); 
+    console.log(item)
     this.showExtras.update(v => !v);
-     document.body.classList.toggle('no-scroll', this.showExtras()); 
-     this.total.update(total => item.price);
-     }
+    document.body.classList.toggle('no-scroll', this.showExtras()); 
+    this.total.update(total => item.price);
+  }
 
   removeFromCart(ci: CartItem) {
     this.grandTotal.update(grandTotal => grandTotal - (ci.item.price + ci.extras?.filter(e => e.quantity > 0).reduce((sum, e) => sum + (e.price * e.quantity), 0)!));
@@ -70,14 +94,14 @@ export class MenuService {
     });
   }
 
-  incrementExtra(extra: any) {
+  incrementExtra(extra: extraItem) {
     this.cartextra.update(extras => {
-      const existing = extras.find(e => e.item === extra.item);
+      const existing = extras.find(e => e.item === extra.name);
   
       if (existing) {
         // increment quantity if already exists
         return extras.map(e =>
-          e.item === extra.item
+          e.item === extra.name
             ? { ...e, quantity: e.quantity + 1 }
             : e
         );
@@ -87,26 +111,26 @@ export class MenuService {
       return [
         ...extras,
         {
-          item: extra.item,
+          item: extra.name,
           price: extra.price,
           quantity: 1
         }
       ];
     });
-  
+  // console.log(this.total(), extra.price)
     this.total.update(total => total + extra.price);
   }
   
 
-    decrementExtra(extra: {item: string; price: number}) {
+    decrementExtra(extra: extraItem) {
       this.cartextra.update(extras => {
-        const existing = extras.find(e => e.item === extra.item);
+        const existing = extras.find(e => e.item === extra.name);
   
         if (existing && existing.quantity >= 1) {
           this.total.update(total => total - extra.price);
           // decrement quantity if more than 1
           return extras.map(e =>
-            e.item === extra.item
+            e.item === extra.name
               ? { ...e, quantity: e.quantity - 1 }
               : e
           );

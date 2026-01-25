@@ -9,6 +9,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { MatIcon } from "@angular/material/icon";
 import { Extras } from '../../Components/extras/extras';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
+
 
 @Component({
   selector: 'app-menu',
@@ -18,26 +20,28 @@ import { Router } from '@angular/router';
   styleUrl: './menu.css'
 })
 export class Menu {
-  providers = signal <TiffinProvider[]>([]);        // signal to hold tiffin providers
+  // providers = signal <TiffinProvider[]>([]);        // signal to hold tiffin providers
   menusrv = inject(MenuService);
-  loading = signal(true);                     // signal to indicate loading state
+  // loading = signal(true);                     // signal to indicate loading state
   router = inject(Router);
-  _snackBar = inject(MatSnackBar);
+  // _snackBar = inject(MatSnackBar);
 
   getci(serviceId: string): any {
     const ci = this.menusrv.cartItems().find(ci => ci.item.service_id === serviceId);
     return ci;
   }
 
-  OpenSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 3000,
-    });
-  }
+  // OpenSnackBar(message: string, action: string) {
+  //   this._snackBar.open(message, action, {
+  //     duration: 3000,
+  //   });
+  // }
 
   ngOnInit() {
-    this.providers.set(PROVIDERS); // load all mock data
-    // this.menusrv.callApi()
+    // this.providers.set(PROVIDERS); // load all mock data
+    const url =  `${environment.baseUrl}/tiffinlist`
+    this.menusrv.callApi(url)
+
     // .pipe(delay(2000))
     // .subscribe({
     //   next: (res) => {

@@ -1,7 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import{ ProfileData } from '../../../model/models';
-import { form, Field, readonly, disabled } from '@angular/forms/signals';
+import { form, Field, disabled } from '@angular/forms/signals';
+import { environment } from '../../../../environments/environment';
 
 
 @Component({
@@ -34,7 +35,8 @@ export class Profile {
 
   ngOnInit() {
     // Initialization logic can be added here
-    const url="http://127.0.0.1:8080/dashboard/profile/1"
+    const userid =signal(Number(localStorage.getItem('businessid')));
+    const url= `${environment.baseUrl}/dashboard/profile/${userid()}`
     this.http.get<any>(url).subscribe({
       next: (res) => {
         this.profile_data.set({

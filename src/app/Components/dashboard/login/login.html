@@ -1,0 +1,73 @@
+<div class="min-h-screen bg-[#fdf6ed] flex flex-col items-center justify-center px-4">
+
+  <!-- Card -->
+  <div class="w-full max-w-md bg-white border border-gray-200 rounded-2xl shadow-lg p-8">
+    
+    <!-- Icon -->
+    <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-orange-100 flex items-center justify-center text-2xl">
+      🍴
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-2xl font-semibold text-center text-gray-900">
+      Provider Login
+    </h1>
+    <p class="text-center text-gray-500 mt-2 mb-6">
+      Sign in to manage your tiffin service
+    </p>
+
+    <!-- Form -->
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Email
+        </label>
+        <input [field] = loginform.username
+          type="email"
+          placeholder="your@email.com"
+          class="w-full rounded-lg bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-400"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Password
+        </label>
+        <input [field] = loginform.password
+          type="password"
+          placeholder="Enter your password"
+          class="w-full rounded-lg bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-400"
+        />
+      </div>
+
+      <button
+        class="w-full mt-2 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-slate-900 to-slate-800 hover:opacity-90 transition"
+        (click)="loginSubmit()"
+      >
+        Sign In
+      </button>
+    </div>
+
+    <!-- Divider -->
+    <div class="my-6 h-px bg-gray-200"></div>
+
+    <!-- Register -->
+    <p class="text-center text-sm text-gray-500">
+      Don’t have an account?
+      <a
+        [routerLink]="['/register']"
+        class="text-orange-500 font-semibold hover:underline"
+      >
+        Register as Provider
+      </a>
+    </p>
+  </div>
+
+  <!-- Demo Credentials -->
+  <div class="w-full max-w-md mt-6 bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900">
+    <p class="font-semibold mb-1">Demo Credentials:</p>
+    <p>Email: test@gmail.com</p>
+    <p>Password: test</p>
+  </div>
+
+</div>
